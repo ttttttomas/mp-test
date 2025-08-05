@@ -11,17 +11,7 @@ const preference = new Preference(client)
 try {
    const response = await preference.create({
         body: {
-            items: [
-                {
-                    title: 'Producto',
-                    unit_price: 100,
-                    quantity: 2,
-                    currency_id: 'ARS',
-                    picture_url: 'https://www.mercadopago.com.ar/mp-assets/img/logo-mercado-pago.jpg',
-                    description: 'Producto de prueba'
-
-                }
-            ],
+           ...req.body,
             redirect_urls: {
                 success: 'https://www.mercadopago.com.ar/mp-assets/img/success.png',
                 failure: 'https://www.mercadopago.com.ar/mp-assets/img/failure.png',
@@ -31,8 +21,6 @@ try {
     })
     res.json(response)
     console.log(response)
-    
-
 }
 catch (error) {
     console.log(error)
